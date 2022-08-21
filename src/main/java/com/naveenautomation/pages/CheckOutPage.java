@@ -104,7 +104,9 @@ public class CheckOutPage extends TestBase {
 		return new OrderPlacedPage();
 	}
 
-	public void inputFieldFillingtest(String f, String l, String a, String c, String p) {
+	public OrderPlacedPage alltest(String f, String l, String a, String c, String p) {
+
+		newAddressBtn.click();
 		enterFirstName(f);
 
 		enterLastName(l);
@@ -118,10 +120,6 @@ public class CheckOutPage extends TestBase {
 		selectCountry();
 
 		selectProvince();
-
-	}
-
-	public OrderPlacedPage allButtonClick() {
 
 		billingDetailBtnClick();
 		deliveryDetailBtnClick();
