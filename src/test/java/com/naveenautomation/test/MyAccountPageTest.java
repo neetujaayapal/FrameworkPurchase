@@ -24,7 +24,7 @@ public class MyAccountPageTest extends TestBase {
 		obj1.clickMyAccountBtn();
 		obj1.clickLogButton();
 		accPage = acc.loginProcess("neetu2020@gmail.com", "1234");
-
+		//accPage = acc.clickLoginBtn();
 	}
 
 	@Test

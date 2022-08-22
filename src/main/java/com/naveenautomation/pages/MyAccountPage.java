@@ -16,6 +16,7 @@ public class MyAccountPage extends TestBase {
 	WebElement productSelected;
 
 	public PhonesAndPDA clickAProduct() {
+
 		productSelected.click();
 
 		return new PhonesAndPDA();

@@ -1,9 +1,9 @@
 package com.naveenautomation.pages;
 
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import org.openqa.selenium.support.ui.Select;
 
 import com.naveenautomation.base.TestBase;
@@ -45,6 +45,7 @@ public class CheckOutPage extends TestBase {
 	WebElement confirmOrderBtn;
 
 	public void newAddressBtnClick() {
+	//explicitWait(driver, 20, By.cssSelector("form.form-horizontal>div:nth-of-type(3) input"));
 		newAddressBtn.click();
 	}
 
@@ -107,6 +108,7 @@ public class CheckOutPage extends TestBase {
 	public OrderPlacedPage alltest(String f, String l, String a, String c, String p) {
 
 		newAddressBtn.click();
+		
 		enterFirstName(f);
 
 		enterLastName(l);
@@ -122,6 +124,8 @@ public class CheckOutPage extends TestBase {
 		selectProvince();
 
 		billingDetailBtnClick();
+		
+	//	explicitWait(driver, 10, By.cssSelector("input#button-shipping-address"));
 		deliveryDetailBtnClick();
 		deliveryMethodBtnClick();
 		paymentAgreeBtnClick();
@@ -141,5 +145,13 @@ public class CheckOutPage extends TestBase {
 
 		return driver.getTitle();
 	}
+	
+//	public WebElement explicitWait(WebDriver driver, int sec,By locator) {
+//
+//		WebDriverWait wait = new WebDriverWait(driver, sec);
+//
+//		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+//
+//	}
 
 }

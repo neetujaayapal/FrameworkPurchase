@@ -20,6 +20,9 @@ public class NaveenHomePage extends TestBase {
 	@FindBy(css = "ul.list-inline li:nth-of-type(2)  ul li:nth-of-type(2) a")
 	WebElement loginBtn;
 
+	@FindBy(css = "ul.list-inline li:nth-of-type(2)  ul li:nth-of-type(1) a")
+	WebElement regBtn;
+
 	public void clickMyAccountBtn() {
 		myAccountBtn.click();
 	}

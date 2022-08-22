@@ -34,12 +34,12 @@ public class AccountLoginPage extends TestBase {
 		loginBtn.click();
 		return new MyAccountPage();
 	}
-	
+
 	public MyAccountPage loginProcess(String email,String password) {
-		
-		enterEmail("neetu2020@gmail.com");
-		enterPassword("1234");
-		 return clickLoginBtn();
+
+		enterEmail(email);
+		enterPassword(password);
+		return clickLoginBtn();
 	}
 
 }

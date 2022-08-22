@@ -1,5 +1,6 @@
 package com.naveenautomation.test;
 
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -26,14 +27,14 @@ public class PhonesAndPDATest extends TestBase {
 		obj1.clickMyAccountBtn();
 		obj1.clickLogButton();
 		accPage = acc.loginProcess("neetu2020@gmail.com", "1234");
-
+		//accPage = acc.clickLoginBtn();
 		ph = accPage.clickAProduct();
 
 	}
 
 	@Test
 	public void addToCartClickTest() {
-
+       
 		ph.addToCartBtnClick();
 
 	}
@@ -41,7 +42,7 @@ public class PhonesAndPDATest extends TestBase {
 	@Test
 	public void checkOutClickTest() {
 
-		ph.checkOutBtnClick();
+	Assert.assertEquals(ph.checkOutBtnClick().getTitleOfCheckOutpage(), "Checkout","Title not matching");	
 
 	}
 
