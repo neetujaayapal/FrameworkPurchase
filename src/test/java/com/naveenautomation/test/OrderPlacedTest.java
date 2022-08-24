@@ -26,18 +26,17 @@ public class OrderPlacedTest extends TestBase {
 	public void startBrowser() {
 		intialization();
 		obj1 = new NaveenHomePage();
-		acc = new AccountLoginPage();
-		accPage = new MyAccountPage();
-		che = new CheckOutPage();
-		ph = new PhonesAndPDA();
 		obj1.clickMyAccountBtn();
-		obj1.clickLogButton();
-		acc.loginProcess("neetu2020@gmail.com", "1234");
-		accPage.clickAProduct();
+		acc = obj1.clickLogButton();
+
+		accPage = acc.loginProcess("neetu2020@gmail.com", "1234");
+
+		ph = accPage.clickAProduct();
+
 		ph.addToCartBtnClick();
-		ph.checkOutBtnClick();
+		che = ph.checkOutBtnClick();
+
 		or = che.alltest("Neetu", "Jayapalan", "Mcmurchy", "Brampton", "L6X");
-		// or = che.confirmOrderBtnClick();
 
 	}
 

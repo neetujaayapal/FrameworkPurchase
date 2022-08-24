@@ -22,19 +22,18 @@ public class PhonesAndPDATest extends TestBase {
 	public void startBrowser() {
 		intialization();
 		obj1 = new NaveenHomePage();
-		acc = new AccountLoginPage();
-		accPage = new MyAccountPage();
+
 		obj1.clickMyAccountBtn();
-		obj1.clickLogButton();
+		acc = obj1.clickLogButton();
 		accPage = acc.loginProcess("neetu2020@gmail.com", "1234");
-		//accPage = acc.clickLoginBtn();
+
 		ph = accPage.clickAProduct();
 
 	}
 
 	@Test
 	public void addToCartClickTest() {
-       
+
 		ph.addToCartBtnClick();
 
 	}
@@ -42,7 +41,7 @@ public class PhonesAndPDATest extends TestBase {
 	@Test
 	public void checkOutClickTest() {
 
-	Assert.assertEquals(ph.checkOutBtnClick().getTitleOfCheckOutpage(), "Checkout","Title not matching");	
+		Assert.assertEquals(ph.checkOutBtnClick().getTitleOfCheckOutpage(), "Checkout", "Title not matching");
 
 	}
 

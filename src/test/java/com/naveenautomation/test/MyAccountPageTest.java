@@ -12,19 +12,19 @@ import com.naveenautomation.pages.NaveenHomePage;
 
 public class MyAccountPageTest extends TestBase {
 
-	NaveenHomePage obj1;
+	NaveenHomePage nh;
 	AccountLoginPage acc;
 	MyAccountPage accPage;
 
 	@BeforeMethod
 	public void startBrowser() {
 		intialization();
-		obj1 = new NaveenHomePage();
-		acc = new AccountLoginPage();
-		obj1.clickMyAccountBtn();
-		obj1.clickLogButton();
+		nh = new NaveenHomePage();
+		nh.clickMyAccountBtn();
+		acc = nh.clickLogButton();
+	
 		accPage = acc.loginProcess("neetu2020@gmail.com", "1234");
-		//accPage = acc.clickLoginBtn();
+	
 	}
 
 	@Test

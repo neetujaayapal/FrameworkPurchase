@@ -1,6 +1,8 @@
 package com.naveenautomation.test;
 
+import static org.testng.Assert.assertEquals;
 
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -24,24 +26,22 @@ public class CheckOutPageTest extends TestBase {
 	public void startBrowser() {
 		intialization();
 		obj1 = new NaveenHomePage();
-		acc = new AccountLoginPage();
-		accPage = new MyAccountPage();
-		ph = new PhonesAndPDA();
+
 		obj1.clickMyAccountBtn();
-		obj1.clickLogButton();
-		acc.loginProcess("neetu2020@gmail.com", "1234");
-		//acc.clickLoginBtn();
-		accPage.clickAProduct();
+		acc = obj1.clickLogButton();
+		accPage = acc.loginProcess("neetu2020@gmail.com", "1234");
+
+		ph = accPage.clickAProduct();
 		ph.addToCartBtnClick();
 		che = ph.checkOutBtnClick();
 
 	}
 
-
 	@Test(priority = 3)
 	public void allButtonTest() {
 
-		che.alltest("Neetu", "Jayapalan", "Mcmurchy", "Brampton", "L6X");
+		String title = che.alltest("Neetu", "Jayapalan", "Mcmurchy", "Brampton", "L6X").getTitleOrderPlaced();
+		Assert.assertEquals(title, "Your order has been placed!", "Message not matching");
 	}
 
 	@AfterMethod

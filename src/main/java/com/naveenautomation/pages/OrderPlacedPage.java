@@ -22,14 +22,14 @@ public class OrderPlacedPage extends TestBase{
 	
 	public String getTitleOrderPlaced() {
 		
-		explicitWait("Your order has been placed!", 30,By.cssSelector("div#content h1"));
+		explicitWait("Your order has been placed!", 30);
 		
-		
+		//By.cssSelector("div#content h1")
 		
 		return orderPlaced.getText();
 	}
 
-	public boolean explicitWait(String name, int sec,By locator) {
+	public boolean explicitWait(String name, int sec) {
 
 		WebDriverWait wait = new WebDriverWait(driver, sec);
 
