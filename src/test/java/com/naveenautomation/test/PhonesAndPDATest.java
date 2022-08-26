@@ -13,35 +13,35 @@ import com.naveenautomation.pages.PhonesAndPDA;
 
 public class PhonesAndPDATest extends TestBase {
 
-	NaveenHomePage obj1;
-	AccountLoginPage acc;
-	MyAccountPage accPage;
-	PhonesAndPDA ph;
+	NaveenHomePage naveenHomePage;
+	AccountLoginPage accountLoginPage;
+	MyAccountPage myAccountPage;
+	PhonesAndPDA phonesAndPDA;
 
 	@BeforeMethod
 	public void startBrowser() {
 		intialization();
-		obj1 = new NaveenHomePage();
+		naveenHomePage = new NaveenHomePage();
 
-		obj1.clickMyAccountBtn();
-		acc = obj1.clickLogButton();
-		accPage = acc.loginProcess("neetu2020@gmail.com", "1234");
-
-		ph = accPage.clickAProduct();
-
+		
 	}
 
 	@Test
 	public void addToCartClickTest() {
+		naveenHomePage.clickMyAccountBtn();
+		accountLoginPage = naveenHomePage.clickLogButton();
+		myAccountPage = accountLoginPage.loginProcess(email(),password());
 
-		ph.addToCartBtnClick();
+		phonesAndPDA = myAccountPage.clickAProduct();
+
+		phonesAndPDA.addToCartBtnClick();
 
 	}
 
 	@Test
 	public void checkOutClickTest() {
 
-		Assert.assertEquals(ph.checkOutBtnClick().getTitleOfCheckOutpage(), "Checkout", "Title not matching");
+		Assert.assertEquals(phonesAndPDA.checkOutBtnClick().getTitleOfCheckOutpage(), "Checkout", "Title not matching");
 
 	}
 

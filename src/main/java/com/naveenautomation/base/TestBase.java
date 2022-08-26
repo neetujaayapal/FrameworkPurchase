@@ -26,10 +26,6 @@ public class TestBase {
 	public static Logger logger;
 	public static EventFiringWebDriver e_driver;
 	public static WebDriverEvents events;
-	
-	
-	
-
 
 	public TestBase() {
 		prop = new Properties();
@@ -48,19 +44,16 @@ public class TestBase {
 			e.printStackTrace();
 		}
 	}
-		
-		@BeforeClass
-		public void loggerSetUp() {
-			logger = Logger.getLogger(TestBase.class);
-			PropertyConfigurator.configure("log4j.properties");
-			BasicConfigurator.configure();
 
-			logger.setLevel(Level.INFO);
-		}
+	@BeforeClass
+	public void loggerSetUp() {
+		logger = Logger.getLogger(TestBase.class);
+		PropertyConfigurator.configure("log4j.properties");
+		BasicConfigurator.configure();
 
-	
-	
-	
+		logger.setLevel(Level.INFO);
+	}
+
 
 	public void intialization() {
 
@@ -82,7 +75,7 @@ public class TestBase {
 			System.out.println(("Warning!!!!Enter appropriate browser"));
 			break;
 		}
-		
+
 		e_driver = new EventFiringWebDriver(driver);
 		events = new WebDriverEvents();
 		e_driver.register(events);
@@ -96,6 +89,34 @@ public class TestBase {
 
 		driver.manage().timeouts().implicitlyWait(Utils.IMPLICIT_WAIT, TimeUnit.SECONDS);
 	}
+	
+
+	public String email() {
+		return prop.getProperty("email");
+	}
+
+	public String password() {
+		return prop.getProperty("password");
+	}
+	public String firstName() {
+		return prop.getProperty("firstname");
+	}
+	public String lastName() {
+		return prop.getProperty("lastname");
+	}
+	public String address() {
+		return prop.getProperty("address");
+	}
+	public String place() {
+		return prop.getProperty("place");
+	}
+	public String postalCode() {
+		return prop.getProperty("postalcode");
+	}
+	public String newPassword() {
+		return prop.getProperty("newpassword");
+	}
+
 
 	public void quitBrowser() {
 		driver.quit();

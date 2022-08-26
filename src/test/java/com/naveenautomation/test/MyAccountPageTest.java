@@ -12,26 +12,36 @@ import com.naveenautomation.pages.NaveenHomePage;
 
 public class MyAccountPageTest extends TestBase {
 
-	NaveenHomePage nh;
-	AccountLoginPage acc;
+	NaveenHomePage naveenHomePage;
+	AccountLoginPage accountLoginPage;
 	MyAccountPage accPage;
 
 	@BeforeMethod
 	public void startBrowser() {
 		intialization();
-		nh = new NaveenHomePage();
-		nh.clickMyAccountBtn();
-		acc = nh.clickLogButton();
-	
-		accPage = acc.loginProcess("neetu2020@gmail.com", "1234");
-	
+		naveenHomePage = new NaveenHomePage();
+		
 	}
 
 	@Test
 	public void productListPageCheckTest() {
+		naveenHomePage.clickMyAccountBtn();
+		accountLoginPage = naveenHomePage.clickLogButton();
+	
+		accPage = accountLoginPage.loginProcess(email(), password());
+	
 
 		String titleOfProductPage = accPage.clickAProduct().getTitleOfPhonesAndPads();
 		Assert.assertEquals(titleOfProductPage, "Phones & PDAs", "Product List page title is not matching");
+		
+	}
+	
+	@Test
+	public void passWordClickTest() {
+
+		String title = accPage.passwordClick().getTitleOfPassword();
+		Assert.assertEquals(title, "Change Password","Title not matching");
+		
 	}
 
 	@AfterMethod

@@ -7,49 +7,42 @@ import org.testng.annotations.Test;
 
 import com.naveenautomation.base.TestBase;
 import com.naveenautomation.pages.AccountLoginPage;
-import com.naveenautomation.pages.CheckOutPage;
+import com.naveenautomation.pages.ChangePassword;
 import com.naveenautomation.pages.MyAccountPage;
 import com.naveenautomation.pages.NaveenHomePage;
-import com.naveenautomation.pages.OrderPlacedPage;
 import com.naveenautomation.pages.PhonesAndPDA;
 
-public class OrderPlacedTest extends TestBase {
+public class ChangePasswordTest extends TestBase {
 
 	NaveenHomePage naveenHomePage;
 	AccountLoginPage accountLoginPage;
 	MyAccountPage myAccountPage;
-	PhonesAndPDA phonesAndPDA;
-	CheckOutPage checkOutPage;
-	OrderPlacedPage orderPlacedPage;
+
+	ChangePassword changePassword;
 
 	@BeforeMethod
 	public void startBrowser() {
 		intialization();
 		naveenHomePage = new NaveenHomePage();
-		
 
 	}
 
 	@Test
-	public void orderPlacedTest() {
+	public void changePasswordTest() {
 		naveenHomePage.clickMyAccountBtn();
 		accountLoginPage = naveenHomePage.clickLogButton();
+		myAccountPage = accountLoginPage.loginProcess(email(), password());
+		changePassword = myAccountPage.passwordClick();
 
-		myAccountPage = accountLoginPage.loginProcess(email(),password());
+		String title = changePassword.totalPasswordBtn(newPassword(), newPassword()).getText();
+		Assert.assertEquals(title, "Success: Your password has been successfully updated.",
+				"Login title is not matching");
 
-		phonesAndPDA = myAccountPage.clickAProduct();
-
-		phonesAndPDA.addToCartBtnClick();
-		checkOutPage = phonesAndPDA.checkOutBtnClick();
-
-		orderPlacedPage = checkOutPage.alltest(firstName(), lastName(), address(), place(), postalCode());
-		String title = orderPlacedPage.getTitleOrderPlaced();
-		Assert.assertEquals(title, "Your order has been placed!", "message not matching");
 	}
 
 	@AfterMethod
 	public void quittingBrowser() {
 		quitBrowser();
-	}
 
+	}
 }

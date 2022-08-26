@@ -35,7 +35,7 @@ public class AccountLoginPage extends TestBase {
 		return new MyAccountPage();
 	}
 
-	public MyAccountPage loginProcess(String email,String password) {
+	public MyAccountPage loginProcess(String email, String password) {
 
 		enterEmail(email);
 		enterPassword(password);
