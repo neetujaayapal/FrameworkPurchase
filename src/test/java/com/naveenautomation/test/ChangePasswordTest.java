@@ -10,7 +10,6 @@ import com.naveenautomation.pages.AccountLoginPage;
 import com.naveenautomation.pages.ChangePassword;
 import com.naveenautomation.pages.MyAccountPage;
 import com.naveenautomation.pages.NaveenHomePage;
-import com.naveenautomation.pages.PhonesAndPDA;
 
 public class ChangePasswordTest extends TestBase {
 

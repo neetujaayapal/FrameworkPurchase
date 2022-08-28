@@ -1,14 +1,12 @@
 package com.naveenautomation.pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.naveenautomation.Utils.Utils;
 import com.naveenautomation.base.TestBase;
 
 public class CheckOutPage extends TestBase {
@@ -18,7 +16,8 @@ public class CheckOutPage extends TestBase {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(css = "form.form-horizontal>div:nth-of-type(3) input")
+	@FindBy(css = "div#content>div>div:nth-of-type(2)>div:nth-of-type(2) form>div:nth-of-type(3) input")
+	//@FindBy(xpath="//input[@value='existing']")
 	WebElement newAddressBtn;
 	@FindBy(css = "#input-payment-firstname")
 	WebElement firstNameBtn;
@@ -49,11 +48,13 @@ public class CheckOutPage extends TestBase {
 	
 
 	public void newAddressBtnClick() {
-		// explicitWait(driver, 20,
-		// By.cssSelector("form.form-horizontal>div:nth-of-type(3) input"));
+	//explicitWait1(driver, ,newAddressBtn);
+//	Utils.click1(newAddressBtn, 60);
+		//Utils.javascriptClick(newAddressBtn);
+		
 		newAddressBtn.click();
 	}
-
+	
 	public void enterFirstName(String name) {
 		firstNameBtn.sendKeys(name);
 	}
@@ -80,8 +81,10 @@ public class CheckOutPage extends TestBase {
 	}
 
 	public void selectProvince() {
+		
+	Utils.selectWithWait(driver,By.cssSelector("#input-payment-zone"), 50, "Ontario",driver.findElement(By.cssSelector("#input-payment-zone")));
 
-		select(province).selectByVisibleText("Ontario");
+		//select(province).selectByVisibleText("Ontario");
 	}
 
 	public void billingDetailBtnClick() {
@@ -112,7 +115,7 @@ public class CheckOutPage extends TestBase {
 
 
 	public OrderPlacedPage alltest(String f, String l, String a, String c, String p) {
-
+       Utils.sleep(5000);
 		newAddressBtn.click();
 
 		enterFirstName(f);
@@ -131,13 +134,18 @@ public class CheckOutPage extends TestBase {
 
 		billingDetailBtnClick();
 
-		explicitWait(driver, 10, By.cssSelector("input#button-shipping-address"));
+		Utils.click3(driver, 10, By.cssSelector("input#button-shipping-address"));
+		
 		deliveryDetailBtnClick();
+		Utils.click3(driver, 10, By.cssSelector("input#button-shipping-method"));
+		
 		deliveryMethodBtnClick();
-		explicitWait(driver, 10, By.cssSelector("div.panel-group>div:nth-of-type(5)>div:nth-of-type(2)>div>div.buttons div.pull-right input:nth-of-type(1)"));
+		Utils.click3(driver, 10, By.cssSelector("div.panel-group>div:nth-of-type(5)>div:nth-of-type(2)>div>div.buttons div.pull-right input:nth-of-type(1)"));
+		
 		paymentAgreeBtnClick();
 		paymentMethodBtnClick();
-		explicitWait(driver, 10, By.cssSelector("div#collapse-checkout-confirm div.panel-body>div:nth-of-type(2) input"));
+		Utils.click3(driver, 10, By.cssSelector("div#collapse-checkout-confirm div.panel-body>div:nth-of-type(2) input"));
+
 		return confirmOrderBtnClick();
 
 	}
@@ -154,12 +162,11 @@ public class CheckOutPage extends TestBase {
 		return driver.getTitle();
 	}
 
-	public WebElement explicitWait(WebDriver driver, int sec,By locator) {
+	
+	
 
-		WebDriverWait wait = new WebDriverWait(driver, sec);
-
-		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-
-	}
+	
+	
+	
 
 }

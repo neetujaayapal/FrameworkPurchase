@@ -40,6 +40,12 @@ public class PhonesAndPDATest extends TestBase {
 
 	@Test
 	public void checkOutClickTest() {
+		naveenHomePage.clickMyAccountBtn();
+		accountLoginPage = naveenHomePage.clickLogButton();
+		myAccountPage = accountLoginPage.loginProcess(email(),password());
+
+		phonesAndPDA = myAccountPage.clickAProduct();
+
 
 		Assert.assertEquals(phonesAndPDA.checkOutBtnClick().getTitleOfCheckOutpage(), "Checkout", "Title not matching");
 

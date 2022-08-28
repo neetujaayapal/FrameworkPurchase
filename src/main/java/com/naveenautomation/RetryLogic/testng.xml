@@ -2,25 +2,19 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Suite">
 <listeners>
-		<listener
-			class-name="com.naveenautomation.Utils.CustomListener" />
-		<listener
-			class-name="com.naveenautomation.RetryLogic.TransformerForRetry" />
-		<listener
-			class-name="com.naveenautomation.reports.ExtentReportListener" />
-	</listeners>
-
+<listener class-name="com.naveenautomation.Utils.CustomListener"/>
+<listener class-name="com.naveenautomation.RetryLogic.TransformerForRetry"/>
+<listener class-name="com.naveenautomation.reports.ExtentReportListener"/>
+</listeners>
   <test thread-count="5" name="Test">
+
     <classes>
       <class name="com.naveenautomation.test.PhonesAndPDATest"/>
       <class name="com.naveenautomation.test.CheckOutPageTest"/>
-      <class name="com.naveenautomation.test.ChangePasswordTest"/>
       <class name="com.naveenautomation.test.MyAccountPageTest"/>
       <class name="com.naveenautomation.test.NaveenHomePageTest"/>
       <class name="com.naveenautomation.test.AccountLoginPageTest"/>
       <class name="com.naveenautomation.test.OrderPlacedTest"/>
-      <class name="com.naveenautomation.test.OrderHistoryPageTest"/>
-      <class name="com.naveenautomation.test.RegisterAccountPageTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

@@ -1,7 +1,5 @@
 package com.naveenautomation.test;
 
-import static org.testng.Assert.assertEquals;
-
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -20,28 +18,27 @@ public class CheckOutPageTest extends TestBase {
 	AccountLoginPage accountLoginPage;
 	MyAccountPage myAccountPage;
 	PhonesAndPDA phonesAndPDA;
-	CheckOutPage che;
+	CheckOutPage cheqPage;
 
 	@BeforeMethod
 	public void startBrowser() {
 		intialization();
 		naveenHomePage = new NaveenHomePage();
 
-		
 	}
 
-	@Test(priority = 3)
-	public void allButtonTest() {
+	@Test
+	public void allButtonTest() throws InterruptedException {
 		naveenHomePage.clickMyAccountBtn();
 		accountLoginPage = naveenHomePage.clickLogButton();
-		myAccountPage = accountLoginPage.loginProcess(email(),password());
+		myAccountPage = accountLoginPage.loginProcess(email(), password());
 
 		phonesAndPDA = myAccountPage.clickAProduct();
 		phonesAndPDA.addToCartBtnClick();
-		che = phonesAndPDA.checkOutBtnClick();
-
-
-		String title = che.alltest(firstName(), lastName(), address(), place(), postalCode()).getTitleOrderPlaced();
+		cheqPage = phonesAndPDA.checkOutBtnClick();
+   
+		String title = cheqPage.alltest(firstName(), lastName(), address(), place(), postalCode())
+				.getTitleOrderPlaced();
 		Assert.assertEquals(title, "Your order has been placed!", "Message not matching");
 	}
 
@@ -49,5 +46,6 @@ public class CheckOutPageTest extends TestBase {
 	public void quittingBrowser() {
 		quitBrowser();
 	}
-
+	
+	
 }

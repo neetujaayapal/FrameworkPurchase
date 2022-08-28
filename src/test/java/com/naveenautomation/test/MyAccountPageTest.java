@@ -38,7 +38,11 @@ public class MyAccountPageTest extends TestBase {
 	
 	@Test
 	public void passWordClickTest() {
-
+		naveenHomePage.clickMyAccountBtn();
+		accountLoginPage = naveenHomePage.clickLogButton();
+	
+		accPage = accountLoginPage.loginProcess(email(), password());
+	
 		String title = accPage.passwordClick().getTitleOfPassword();
 		Assert.assertEquals(title, "Change Password","Title not matching");
 		

@@ -1,9 +1,11 @@
 package com.naveenautomation.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.naveenautomation.Utils.Utils;
 import com.naveenautomation.base.TestBase;
 
 public class PhonesAndPDA extends TestBase {
@@ -24,7 +26,9 @@ public class PhonesAndPDA extends TestBase {
 	}
 
 	public CheckOutPage checkOutBtnClick() {
-		checkOutButton.click();
+
+		Utils.click2(driver, 20, By.cssSelector("ul.list-inline>li:nth-of-type(5) span"));
+
 		return new CheckOutPage();
 	}
 
