@@ -1,5 +1,6 @@
 package com.naveenautomation.test;
 
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
@@ -28,8 +29,7 @@ public class RegisterAccountPageTest extends TestBase {
 		registerAccountPage = naveenHomePage.clickRegButton();
 		String text = registerAccountPage.allRegTest(fname, lname, email, tel, pass, cpass).getTextOfAccCreated();
 
-		// Assert.assertEquals(text, "Your Account Has Been Created!", "text is not
-		// matching");
+		Assert.assertEquals(text, "Your Account Has Been Created!", "text is not matching");
 	}
 
 	@AfterMethod

@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.naveenautomation.Utils.Utils;
 import com.naveenautomation.base.TestBase;
 
 public class ChangePassword  extends TestBase{
@@ -21,27 +22,20 @@ public class ChangePassword  extends TestBase{
 	@FindBy(css = "div.buttons.clearfix>div:nth-of-type(2) input")
 	WebElement continueBtn;
 	
-	public void enterPassword(String pass) {
-		password.sendKeys(pass);
-	}
-	
-	public void enterConfirmPassword(String pass) {
-		passwordConfirm.sendKeys(pass);
-	}
-	
-	public MyAccountPage clickContinueBtn() {
-		continueBtn.click();
-		return new MyAccountPage();
-	}
+
 	
 	public String getTitleOfPassword() {
 		return driver.getTitle();
 	}
 	
 	public MyAccountPage totalPasswordBtn(String pass,String cpass) {
-		enterPassword(pass);
-		enterConfirmPassword(cpass);
-		continueBtn.click();
+		
+		Utils.normalSendKeys(password, pass);
+
+		Utils.normalSendKeys(passwordConfirm, cpass);
+		
+		Utils.normalClick(continueBtn);
+
 		return new MyAccountPage();
 	}
 }

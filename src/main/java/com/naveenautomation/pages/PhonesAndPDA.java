@@ -21,8 +21,8 @@ public class PhonesAndPDA extends TestBase {
 	WebElement checkOutButton;
 
 	public void addToCartBtnClick() {
+		Utils.normalClick(addToCartElement);
 
-		addToCartElement.click();
 	}
 
 	public CheckOutPage checkOutBtnClick() {

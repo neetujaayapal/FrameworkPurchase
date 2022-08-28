@@ -87,8 +87,20 @@ public class Utils extends TestBase {
 	
 	public static void click3(WebDriver driver, int sec,By locator) {
 
-		new WebDriverWait(driver, sec).until(ExpectedConditions.visibilityOfElementLocated(locator));
+		new WebDriverWait(driver, sec).until(ExpectedConditions.visibilityOfElementLocated(locator)).click();
 
+	}
+	
+	public static void normalClick(WebElement element) {
+		element.click();		
+	}
+	
+	public static void normalSendKeys(WebElement element,String name) {
+		element.sendKeys(name);		
+	}
+	
+	public static void submit(WebElement element) {
+		element.submit();		
 	}
 
 	

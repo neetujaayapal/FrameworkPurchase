@@ -26,19 +26,19 @@ public class MyAccountPage extends TestBase {
 
 	public ChangePassword passwordClick() {
 
-		Utils.click1(changePassword,10);
+		Utils.click1(changePassword, 10);
 
 		return new ChangePassword();
 	}
 
 	public OrderHistoryPage orderHistoryClick() {
-		orderHistory.click();
+		Utils.normalClick(orderHistory);
+
 		return new OrderHistoryPage();
 	}
 
 	public PhonesAndPDA clickAProduct() {
-
-		productSelected.click();
+		Utils.normalClick(productSelected);
 
 		return new PhonesAndPDA();
 	}

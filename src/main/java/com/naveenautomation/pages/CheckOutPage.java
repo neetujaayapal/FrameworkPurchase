@@ -17,7 +17,7 @@ public class CheckOutPage extends TestBase {
 	}
 
 	@FindBy(css = "div#content>div>div:nth-of-type(2)>div:nth-of-type(2) form>div:nth-of-type(3) input")
-	//@FindBy(xpath="//input[@value='existing']")
+	
 	WebElement newAddressBtn;
 	@FindBy(css = "#input-payment-firstname")
 	WebElement firstNameBtn;
@@ -45,35 +45,6 @@ public class CheckOutPage extends TestBase {
 	WebElement paymentMethodBtn;
 	@FindBy(css = "div#collapse-checkout-confirm div.panel-body>div:nth-of-type(2) input")
 	WebElement confirmOrderBtn;
-	
-
-	public void newAddressBtnClick() {
-	//explicitWait1(driver, ,newAddressBtn);
-//	Utils.click1(newAddressBtn, 60);
-		//Utils.javascriptClick(newAddressBtn);
-		
-		newAddressBtn.click();
-	}
-	
-	public void enterFirstName(String name) {
-		firstNameBtn.sendKeys(name);
-	}
-
-	public void enterLastName(String nam) {
-		lastNameBtn.sendKeys(nam);
-	}
-
-	public void enterAddress(String add) {
-		address.sendKeys(add);
-	}
-
-	public void enterCity(String cit) {
-		city.sendKeys(cit);
-	}
-
-	public void enterPostalCode(String po) {
-		postalCode.sendKeys(po);
-	}
 
 	public void selectCountry() {
 
@@ -81,72 +52,43 @@ public class CheckOutPage extends TestBase {
 	}
 
 	public void selectProvince() {
-		
-	Utils.selectWithWait(driver,By.cssSelector("#input-payment-zone"), 50, "Ontario",driver.findElement(By.cssSelector("#input-payment-zone")));
 
-		//select(province).selectByVisibleText("Ontario");
+		Utils.selectWithWait(driver, By.cssSelector("#input-payment-zone"), 50, "Ontario",
+				driver.findElement(By.cssSelector("#input-payment-zone")));
+
 	}
-
-	public void billingDetailBtnClick() {
-		billingDetailBtn.click();
-	}
-
-	public void deliveryDetailBtnClick() {
-		deliveryDetailBtn.click();
-	}
-
-	public void deliveryMethodBtnClick() {
-		deliveryMethodBtn.click();
-	}
-
-	public void paymentAgreeBtnClick() {
-		paymentMethodAgreeBtn.click();
-	}
-
-	public void paymentMethodBtnClick() {
-		paymentMethodBtn.click();
-	}
-
-	public OrderPlacedPage confirmOrderBtnClick() {
-		confirmOrderBtn.click();
-
-		return new OrderPlacedPage();
-	}
-
 
 	public OrderPlacedPage alltest(String f, String l, String a, String c, String p) {
-       Utils.sleep(5000);
-		newAddressBtn.click();
+		Utils.sleep(5000);
+		Utils.normalClick(newAddressBtn);
+		Utils.sendKeys(firstNameBtn, f);
 
-		enterFirstName(f);
+		Utils.sendKeys(lastNameBtn, l);
 
-		enterLastName(l);
+		Utils.sendKeys(address, a);
 
-		enterAddress(a);
+		Utils.sendKeys(city, c);
 
-		enterCity(c);
-
-		enterPostalCode(p);
+		Utils.sendKeys(postalCode, p);
 
 		selectCountry();
 
 		selectProvince();
 
-		billingDetailBtnClick();
+		Utils.normalClick(billingDetailBtn);
 
 		Utils.click3(driver, 10, By.cssSelector("input#button-shipping-address"));
-		
-		deliveryDetailBtnClick();
-		Utils.click3(driver, 10, By.cssSelector("input#button-shipping-method"));
-		
-		deliveryMethodBtnClick();
-		Utils.click3(driver, 10, By.cssSelector("div.panel-group>div:nth-of-type(5)>div:nth-of-type(2)>div>div.buttons div.pull-right input:nth-of-type(1)"));
-		
-		paymentAgreeBtnClick();
-		paymentMethodBtnClick();
-		Utils.click3(driver, 10, By.cssSelector("div#collapse-checkout-confirm div.panel-body>div:nth-of-type(2) input"));
 
-		return confirmOrderBtnClick();
+		Utils.click3(driver, 10, By.cssSelector("input#button-shipping-method"));
+
+		Utils.click3(driver, 10, By.cssSelector(
+				"div.panel-group>div:nth-of-type(5)>div:nth-of-type(2)>div>div.buttons div.pull-right input:nth-of-type(1)"));
+
+		Utils.normalClick(paymentMethodBtn);
+		Utils.click3(driver, 10,
+				By.cssSelector("div#collapse-checkout-confirm div.panel-body>div:nth-of-type(2) input"));
+
+		return new OrderPlacedPage();
 
 	}
 
@@ -161,12 +103,5 @@ public class CheckOutPage extends TestBase {
 
 		return driver.getTitle();
 	}
-
-	
-	
-
-	
-	
-	
 
 }

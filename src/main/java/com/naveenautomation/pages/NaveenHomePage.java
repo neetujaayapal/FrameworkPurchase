@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.naveenautomation.Utils.Utils;
 import com.naveenautomation.base.TestBase;
 
 public class NaveenHomePage extends TestBase {
@@ -24,16 +25,19 @@ public class NaveenHomePage extends TestBase {
 	WebElement regBtn;
 
 	public void clickMyAccountBtn() {
-		myAccountBtn.click();
+		
+		Utils.normalClick(myAccountBtn);
 	}
 
 	public RegisterAccountPage clickRegButton() {
-		regBtn.click();
+		Utils.normalClick(regBtn);
+
 		return new RegisterAccountPage();
 	}
 
 	public AccountLoginPage clickLogButton() {
-		loginBtn.click();
+		Utils.normalClick(loginBtn);
+	
 		return new AccountLoginPage();
 	}
 
