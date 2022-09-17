@@ -3,6 +3,7 @@ package com.naveenautomation.test;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import com.naveenautomation.base.TestBase;
@@ -24,7 +25,7 @@ public class OrderHistoryPageTest extends TestBase {
 		naveenHomePage = new NaveenHomePage();
 
 	}
-
+   
 	@Test
 	public void verifyTotalAndOrderDate() {
 
@@ -34,12 +35,12 @@ public class OrderHistoryPageTest extends TestBase {
 		accLoginPage = naveenHomePage.clickLogButton();
 		myAccPagePage = accLoginPage.loginProcess(email(), password());
 		orderHistoryPage = myAccPagePage.orderHistoryClick();
-		String total = orderHistoryPage.totalValue("#1565");
+		String total = orderHistoryPage.totalValue("#1733");
 		Assert.assertEquals(total, "$105.00", "Amount does not match");
 		System.out.println("The amount matches with ID");
 
-		String date = orderHistoryPage.dateValue("#1565");
-		Assert.assertEquals(date, "28/08/2022", "Date does not match");
+		String date = orderHistoryPage.dateValue("#1733");
+		Assert.assertEquals(date, "12/09/2022", "Date does not match");
 		System.out.println("The date matches with ID");
 	}
 

@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import com.naveenautomation.Utils.ExcelUtils;
@@ -22,7 +23,7 @@ public class RegisterAccountPageTest extends TestBase {
 		naveenHomePage = new NaveenHomePage();
 
 	}
-
+@Ignore
 	@Test(dataProvider = "Register")
 	public void loginTest(String fname, String lname, String email, String tel, String pass, String cpass) {
 		naveenHomePage.clickMyAccountBtn();

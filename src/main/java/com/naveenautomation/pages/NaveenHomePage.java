@@ -15,7 +15,7 @@ public class NaveenHomePage extends TestBase {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(css = "ul.list-inline li:nth-of-type(2)  a span:nth-of-type(1)")
+	@FindBy(css = "a[title='My Account']")
 	WebElement myAccountBtn;
 
 	@FindBy(css = "ul.list-inline li:nth-of-type(2)  ul li:nth-of-type(2) a")

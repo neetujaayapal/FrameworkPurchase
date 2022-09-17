@@ -36,7 +36,7 @@ public class TestBase {
 		FileInputStream file;
 		try {
 			file = new FileInputStream(
-					"C:\\Users\\skpos\\git\\FrameworkPurchase\\src\\main\\java\\com\\naveenautomation\\configure\\config.properties");
+					"C:\\JavaProject\\FrameworkPurchase\\src\\main\\java\\com\\naveenautomation\\configure\\config.properties");
 			try {
 				prop.load(file);
 			} catch (IOException e) {
